@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hola</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <p id="numero">Numero: </p>
+    <script>
+    fetch('http://localhost:5000/api/interpretar', 
+        {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+        }
+    ).then(resp => resp.json())
+    .then(data => {
+        const numero = document.getElementById('numero').innerHTML = `Numero: ${data.resultado}`;
+    })
+    </script>
+</body>
+</html>

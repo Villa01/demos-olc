@@ -1,0 +1,1529 @@
+Created by PLY (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> inicio
+Rule 1     inicio -> instrucciones
+Rule 2     instrucciones -> instrucciones instruccion PYC
+Rule 3     instrucciones -> instruccion PYC
+Rule 4     instruccion -> ejecutar
+Rule 5     instruccion -> sent_if
+Rule 6     instruccion -> asignacion
+Rule 7     instruccion -> funcion
+Rule 8     asignacion -> LET ID DOSPTS tipo IGUAL expresion
+Rule 9     tipo -> INT64
+Rule 10    tipo -> FLOAT64
+Rule 11    tipo -> BOOL
+Rule 12    ejecutar -> EJECUTAR PARA expresion PARC
+Rule 13    sent_if -> IF expresion LLAVA instrucciones LLAVC
+Rule 14    sent_if -> IF expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC
+Rule 15    sent_if -> IF expresion LLAVA instrucciones else_if
+Rule 16    else_if -> ELSE IF expresion LLAVA instrucciones LLAVC
+Rule 17    expresion -> expresion MAS expresion
+Rule 18    expresion -> expresion MENOS expresion
+Rule 19    expresion -> expresion MULTI expresion
+Rule 20    expresion -> expresion DIV expresion
+Rule 21    expresion -> expresion MENOR expresion
+Rule 22    expresion -> expresion IGUALIGUAL expresion
+Rule 23    expresion -> expresion MAYOR expresion
+Rule 24    expresion -> PARA expresion PARC
+Rule 25    expresion -> MENOS expresion
+Rule 26    expresion -> ENTERO
+Rule 27    expresion -> DECIMAL
+Rule 28    expresion -> TRUE
+Rule 29    expresion -> FALSE
+Rule 30    expresion -> ID
+Rule 31    funcion -> FUNC ID PARA parametros PARC LLAVA instrucciones LLAVC
+Rule 32    funcion -> FUNC ID PARA PARC LLAVA instrucciones LLAVC
+Rule 33    parametros -> parametros COMA ID
+Rule 34    parametros -> ID
+
+Terminals, with rules where they appear
+
+BOOL                 : 11
+COMA                 : 33
+DECIMAL              : 27
+DIV                  : 20
+DOSPTS               : 8
+EJECUTAR             : 12
+ELSE                 : 14 16
+ENTERO               : 26
+FALSE                : 29
+FLOAT64              : 10
+FUNC                 : 31 32
+ID                   : 8 30 31 32 33 34
+IF                   : 13 14 15 16
+IGUAL                : 8
+IGUALIGUAL           : 22
+INT64                : 9
+LET                  : 8
+LLAVA                : 13 14 14 15 16 31 32
+LLAVC                : 13 14 14 16 31 32
+MAS                  : 17
+MAYOR                : 23
+MENOR                : 21
+MENOS                : 18 25
+MULTI                : 19
+PARA                 : 12 24 31 32
+PARC                 : 12 24 31 32
+PYC                  : 2 3
+TRUE                 : 28
+error                : 
+
+Nonterminals, with rules where they appear
+
+asignacion           : 6
+ejecutar             : 4
+else_if              : 15
+expresion            : 8 12 13 14 15 16 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 25
+funcion              : 7
+inicio               : 0
+instruccion          : 2 3
+instrucciones        : 1 2 13 14 14 15 16 31 32
+parametros           : 31 33
+sent_if              : 5
+tipo                 : 8
+
+
+state 0
+
+    (0) S' -> . inicio
+    (1) inicio -> . instrucciones
+    (2) instrucciones -> . instrucciones instruccion PYC
+    (3) instrucciones -> . instruccion PYC
+    (4) instruccion -> . ejecutar
+    (5) instruccion -> . sent_if
+    (6) instruccion -> . asignacion
+    (7) instruccion -> . funcion
+    (12) ejecutar -> . EJECUTAR PARA expresion PARC
+    (13) sent_if -> . IF expresion LLAVA instrucciones LLAVC
+    (14) sent_if -> . IF expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC
+    (15) sent_if -> . IF expresion LLAVA instrucciones else_if
+    (8) asignacion -> . LET ID DOSPTS tipo IGUAL expresion
+    (31) funcion -> . FUNC ID PARA parametros PARC LLAVA instrucciones LLAVC
+    (32) funcion -> . FUNC ID PARA PARC LLAVA instrucciones LLAVC
+
+    EJECUTAR        shift and go to state 8
+    IF              shift and go to state 9
+    LET             shift and go to state 10
+    FUNC            shift and go to state 11
+
+    inicio                         shift and go to state 1
+    instrucciones                  shift and go to state 2
+    instruccion                    shift and go to state 3
+    ejecutar                       shift and go to state 4
+    sent_if                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    funcion                        shift and go to state 7
+
+state 1
+
+    (0) S' -> inicio .
+
+
+
+state 2
+
+    (1) inicio -> instrucciones .
+    (2) instrucciones -> instrucciones . instruccion PYC
+    (4) instruccion -> . ejecutar
+    (5) instruccion -> . sent_if
+    (6) instruccion -> . asignacion
+    (7) instruccion -> . funcion
+    (12) ejecutar -> . EJECUTAR PARA expresion PARC
+    (13) sent_if -> . IF expresion LLAVA instrucciones LLAVC
+    (14) sent_if -> . IF expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC
+    (15) sent_if -> . IF expresion LLAVA instrucciones else_if
+    (8) asignacion -> . LET ID DOSPTS tipo IGUAL expresion
+    (31) funcion -> . FUNC ID PARA parametros PARC LLAVA instrucciones LLAVC
+    (32) funcion -> . FUNC ID PARA PARC LLAVA instrucciones LLAVC
+
+    $end            reduce using rule 1 (inicio -> instrucciones .)
+    EJECUTAR        shift and go to state 8
+    IF              shift and go to state 9
+    LET             shift and go to state 10
+    FUNC            shift and go to state 11
+
+    instruccion                    shift and go to state 12
+    ejecutar                       shift and go to state 4
+    sent_if                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    funcion                        shift and go to state 7
+
+state 3
+
+    (3) instrucciones -> instruccion . PYC
+
+    PYC             shift and go to state 13
+
+
+state 4
+
+    (4) instruccion -> ejecutar .
+
+    PYC             reduce using rule 4 (instruccion -> ejecutar .)
+
+
+state 5
+
+    (5) instruccion -> sent_if .
+
+    PYC             reduce using rule 5 (instruccion -> sent_if .)
+
+
+state 6
+
+    (6) instruccion -> asignacion .
+
+    PYC             reduce using rule 6 (instruccion -> asignacion .)
+
+
+state 7
+
+    (7) instruccion -> funcion .
+
+    PYC             reduce using rule 7 (instruccion -> funcion .)
+
+
+state 8
+
+    (12) ejecutar -> EJECUTAR . PARA expresion PARC
+
+    PARA            shift and go to state 14
+
+
+state 9
+
+    (13) sent_if -> IF . expresion LLAVA instrucciones LLAVC
+    (14) sent_if -> IF . expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC
+    (15) sent_if -> IF . expresion LLAVA instrucciones else_if
+    (17) expresion -> . expresion MAS expresion
+    (18) expresion -> . expresion MENOS expresion
+    (19) expresion -> . expresion MULTI expresion
+    (20) expresion -> . expresion DIV expresion
+    (21) expresion -> . expresion MENOR expresion
+    (22) expresion -> . expresion IGUALIGUAL expresion
+    (23) expresion -> . expresion MAYOR expresion
+    (24) expresion -> . PARA expresion PARC
+    (25) expresion -> . MENOS expresion
+    (26) expresion -> . ENTERO
+    (27) expresion -> . DECIMAL
+    (28) expresion -> . TRUE
+    (29) expresion -> . FALSE
+    (30) expresion -> . ID
+
+    PARA            shift and go to state 17
+    MENOS           shift and go to state 16
+    ENTERO          shift and go to state 18
+    DECIMAL         shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    ID              shift and go to state 22
+
+    expresion                      shift and go to state 15
+
+state 10
+
+    (8) asignacion -> LET . ID DOSPTS tipo IGUAL expresion
+
+    ID              shift and go to state 23
+
+
+state 11
+
+    (31) funcion -> FUNC . ID PARA parametros PARC LLAVA instrucciones LLAVC
+    (32) funcion -> FUNC . ID PARA PARC LLAVA instrucciones LLAVC
+
+    ID              shift and go to state 24
+
+
+state 12
+
+    (2) instrucciones -> instrucciones instruccion . PYC
+
+    PYC             shift and go to state 25
+
+
+state 13
+
+    (3) instrucciones -> instruccion PYC .
+
+    EJECUTAR        reduce using rule 3 (instrucciones -> instruccion PYC .)
+    IF              reduce using rule 3 (instrucciones -> instruccion PYC .)
+    LET             reduce using rule 3 (instrucciones -> instruccion PYC .)
+    FUNC            reduce using rule 3 (instrucciones -> instruccion PYC .)
+    $end            reduce using rule 3 (instrucciones -> instruccion PYC .)
+    LLAVC           reduce using rule 3 (instrucciones -> instruccion PYC .)
+    ELSE            reduce using rule 3 (instrucciones -> instruccion PYC .)
+
+
+state 14
+
+    (12) ejecutar -> EJECUTAR PARA . expresion PARC
+    (17) expresion -> . expresion MAS expresion
+    (18) expresion -> . expresion MENOS expresion
+    (19) expresion -> . expresion MULTI expresion
+    (20) expresion -> . expresion DIV expresion
+    (21) expresion -> . expresion MENOR expresion
+    (22) expresion -> . expresion IGUALIGUAL expresion
+    (23) expresion -> . expresion MAYOR expresion
+    (24) expresion -> . PARA expresion PARC
+    (25) expresion -> . MENOS expresion
+    (26) expresion -> . ENTERO
+    (27) expresion -> . DECIMAL
+    (28) expresion -> . TRUE
+    (29) expresion -> . FALSE
+    (30) expresion -> . ID
+
+    PARA            shift and go to state 17
+    MENOS           shift and go to state 16
+    ENTERO          shift and go to state 18
+    DECIMAL         shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    ID              shift and go to state 22
+
+    expresion                      shift and go to state 26
+
+state 15
+
+    (13) sent_if -> IF expresion . LLAVA instrucciones LLAVC
+    (14) sent_if -> IF expresion . LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC
+    (15) sent_if -> IF expresion . LLAVA instrucciones else_if
+    (17) expresion -> expresion . MAS expresion
+    (18) expresion -> expresion . MENOS expresion
+    (19) expresion -> expresion . MULTI expresion
+    (20) expresion -> expresion . DIV expresion
+    (21) expresion -> expresion . MENOR expresion
+    (22) expresion -> expresion . IGUALIGUAL expresion
+    (23) expresion -> expresion . MAYOR expresion
+
+    LLAVA           shift and go to state 27
+    MAS             shift and go to state 28
+    MENOS           shift and go to state 29
+    MULTI           shift and go to state 30
+    DIV             shift and go to state 31
+    MENOR           shift and go to state 32
+    IGUALIGUAL      shift and go to state 33
+    MAYOR           shift and go to state 34
+
+
+state 16
+
+    (25) expresion -> MENOS . expresion
+    (17) expresion -> . expresion MAS expresion
+    (18) expresion -> . expresion MENOS expresion
+    (19) expresion -> . expresion MULTI expresion
+    (20) expresion -> . expresion DIV expresion
+    (21) expresion -> . expresion MENOR expresion
+    (22) expresion -> . expresion IGUALIGUAL expresion
+    (23) expresion -> . expresion MAYOR expresion
+    (24) expresion -> . PARA expresion PARC
+    (25) expresion -> . MENOS expresion
+    (26) expresion -> . ENTERO
+    (27) expresion -> . DECIMAL
+    (28) expresion -> . TRUE
+    (29) expresion -> . FALSE
+    (30) expresion -> . ID
+
+    PARA            shift and go to state 17
+    MENOS           shift and go to state 16
+    ENTERO          shift and go to state 18
+    DECIMAL         shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    ID              shift and go to state 22
+
+    expresion                      shift and go to state 35
+
+state 17
+
+    (24) expresion -> PARA . expresion PARC
+    (17) expresion -> . expresion MAS expresion
+    (18) expresion -> . expresion MENOS expresion
+    (19) expresion -> . expresion MULTI expresion
+    (20) expresion -> . expresion DIV expresion
+    (21) expresion -> . expresion MENOR expresion
+    (22) expresion -> . expresion IGUALIGUAL expresion
+    (23) expresion -> . expresion MAYOR expresion
+    (24) expresion -> . PARA expresion PARC
+    (25) expresion -> . MENOS expresion
+    (26) expresion -> . ENTERO
+    (27) expresion -> . DECIMAL
+    (28) expresion -> . TRUE
+    (29) expresion -> . FALSE
+    (30) expresion -> . ID
+
+    PARA            shift and go to state 17
+    MENOS           shift and go to state 16
+    ENTERO          shift and go to state 18
+    DECIMAL         shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    ID              shift and go to state 22
+
+    expresion                      shift and go to state 36
+
+state 18
+
+    (26) expresion -> ENTERO .
+
+    LLAVA           reduce using rule 26 (expresion -> ENTERO .)
+    MAS             reduce using rule 26 (expresion -> ENTERO .)
+    MENOS           reduce using rule 26 (expresion -> ENTERO .)
+    MULTI           reduce using rule 26 (expresion -> ENTERO .)
+    DIV             reduce using rule 26 (expresion -> ENTERO .)
+    MENOR           reduce using rule 26 (expresion -> ENTERO .)
+    IGUALIGUAL      reduce using rule 26 (expresion -> ENTERO .)
+    MAYOR           reduce using rule 26 (expresion -> ENTERO .)
+    PARC            reduce using rule 26 (expresion -> ENTERO .)
+    PYC             reduce using rule 26 (expresion -> ENTERO .)
+
+
+state 19
+
+    (27) expresion -> DECIMAL .
+
+    LLAVA           reduce using rule 27 (expresion -> DECIMAL .)
+    MAS             reduce using rule 27 (expresion -> DECIMAL .)
+    MENOS           reduce using rule 27 (expresion -> DECIMAL .)
+    MULTI           reduce using rule 27 (expresion -> DECIMAL .)
+    DIV             reduce using rule 27 (expresion -> DECIMAL .)
+    MENOR           reduce using rule 27 (expresion -> DECIMAL .)
+    IGUALIGUAL      reduce using rule 27 (expresion -> DECIMAL .)
+    MAYOR           reduce using rule 27 (expresion -> DECIMAL .)
+    PARC            reduce using rule 27 (expresion -> DECIMAL .)
+    PYC             reduce using rule 27 (expresion -> DECIMAL .)
+
+
+state 20
+
+    (28) expresion -> TRUE .
+
+    LLAVA           reduce using rule 28 (expresion -> TRUE .)
+    MAS             reduce using rule 28 (expresion -> TRUE .)
+    MENOS           reduce using rule 28 (expresion -> TRUE .)
+    MULTI           reduce using rule 28 (expresion -> TRUE .)
+    DIV             reduce using rule 28 (expresion -> TRUE .)
+    MENOR           reduce using rule 28 (expresion -> TRUE .)
+    IGUALIGUAL      reduce using rule 28 (expresion -> TRUE .)
+    MAYOR           reduce using rule 28 (expresion -> TRUE .)
+    PARC            reduce using rule 28 (expresion -> TRUE .)
+    PYC             reduce using rule 28 (expresion -> TRUE .)
+
+
+state 21
+
+    (29) expresion -> FALSE .
+
+    LLAVA           reduce using rule 29 (expresion -> FALSE .)
+    MAS             reduce using rule 29 (expresion -> FALSE .)
+    MENOS           reduce using rule 29 (expresion -> FALSE .)
+    MULTI           reduce using rule 29 (expresion -> FALSE .)
+    DIV             reduce using rule 29 (expresion -> FALSE .)
+    MENOR           reduce using rule 29 (expresion -> FALSE .)
+    IGUALIGUAL      reduce using rule 29 (expresion -> FALSE .)
+    MAYOR           reduce using rule 29 (expresion -> FALSE .)
+    PARC            reduce using rule 29 (expresion -> FALSE .)
+    PYC             reduce using rule 29 (expresion -> FALSE .)
+
+
+state 22
+
+    (30) expresion -> ID .
+
+    LLAVA           reduce using rule 30 (expresion -> ID .)
+    MAS             reduce using rule 30 (expresion -> ID .)
+    MENOS           reduce using rule 30 (expresion -> ID .)
+    MULTI           reduce using rule 30 (expresion -> ID .)
+    DIV             reduce using rule 30 (expresion -> ID .)
+    MENOR           reduce using rule 30 (expresion -> ID .)
+    IGUALIGUAL      reduce using rule 30 (expresion -> ID .)
+    MAYOR           reduce using rule 30 (expresion -> ID .)
+    PARC            reduce using rule 30 (expresion -> ID .)
+    PYC             reduce using rule 30 (expresion -> ID .)
+
+
+state 23
+
+    (8) asignacion -> LET ID . DOSPTS tipo IGUAL expresion
+
+    DOSPTS          shift and go to state 37
+
+
+state 24
+
+    (31) funcion -> FUNC ID . PARA parametros PARC LLAVA instrucciones LLAVC
+    (32) funcion -> FUNC ID . PARA PARC LLAVA instrucciones LLAVC
+
+    PARA            shift and go to state 38
+
+
+state 25
+
+    (2) instrucciones -> instrucciones instruccion PYC .
+
+    EJECUTAR        reduce using rule 2 (instrucciones -> instrucciones instruccion PYC .)
+    IF              reduce using rule 2 (instrucciones -> instrucciones instruccion PYC .)
+    LET             reduce using rule 2 (instrucciones -> instrucciones instruccion PYC .)
+    FUNC            reduce using rule 2 (instrucciones -> instrucciones instruccion PYC .)
+    $end            reduce using rule 2 (instrucciones -> instrucciones instruccion PYC .)
+    LLAVC           reduce using rule 2 (instrucciones -> instrucciones instruccion PYC .)
+    ELSE            reduce using rule 2 (instrucciones -> instrucciones instruccion PYC .)
+
+
+state 26
+
+    (12) ejecutar -> EJECUTAR PARA expresion . PARC
+    (17) expresion -> expresion . MAS expresion
+    (18) expresion -> expresion . MENOS expresion
+    (19) expresion -> expresion . MULTI expresion
+    (20) expresion -> expresion . DIV expresion
+    (21) expresion -> expresion . MENOR expresion
+    (22) expresion -> expresion . IGUALIGUAL expresion
+    (23) expresion -> expresion . MAYOR expresion
+
+    PARC            shift and go to state 39
+    MAS             shift and go to state 28
+    MENOS           shift and go to state 29
+    MULTI           shift and go to state 30
+    DIV             shift and go to state 31
+    MENOR           shift and go to state 32
+    IGUALIGUAL      shift and go to state 33
+    MAYOR           shift and go to state 34
+
+
+state 27
+
+    (13) sent_if -> IF expresion LLAVA . instrucciones LLAVC
+    (14) sent_if -> IF expresion LLAVA . instrucciones LLAVC ELSE LLAVA instrucciones LLAVC
+    (15) sent_if -> IF expresion LLAVA . instrucciones else_if
+    (2) instrucciones -> . instrucciones instruccion PYC
+    (3) instrucciones -> . instruccion PYC
+    (4) instruccion -> . ejecutar
+    (5) instruccion -> . sent_if
+    (6) instruccion -> . asignacion
+    (7) instruccion -> . funcion
+    (12) ejecutar -> . EJECUTAR PARA expresion PARC
+    (13) sent_if -> . IF expresion LLAVA instrucciones LLAVC
+    (14) sent_if -> . IF expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC
+    (15) sent_if -> . IF expresion LLAVA instrucciones else_if
+    (8) asignacion -> . LET ID DOSPTS tipo IGUAL expresion
+    (31) funcion -> . FUNC ID PARA parametros PARC LLAVA instrucciones LLAVC
+    (32) funcion -> . FUNC ID PARA PARC LLAVA instrucciones LLAVC
+
+    EJECUTAR        shift and go to state 8
+    IF              shift and go to state 9
+    LET             shift and go to state 10
+    FUNC            shift and go to state 11
+
+    instrucciones                  shift and go to state 40
+    instruccion                    shift and go to state 3
+    ejecutar                       shift and go to state 4
+    sent_if                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    funcion                        shift and go to state 7
+
+state 28
+
+    (17) expresion -> expresion MAS . expresion
+    (17) expresion -> . expresion MAS expresion
+    (18) expresion -> . expresion MENOS expresion
+    (19) expresion -> . expresion MULTI expresion
+    (20) expresion -> . expresion DIV expresion
+    (21) expresion -> . expresion MENOR expresion
+    (22) expresion -> . expresion IGUALIGUAL expresion
+    (23) expresion -> . expresion MAYOR expresion
+    (24) expresion -> . PARA expresion PARC
+    (25) expresion -> . MENOS expresion
+    (26) expresion -> . ENTERO
+    (27) expresion -> . DECIMAL
+    (28) expresion -> . TRUE
+    (29) expresion -> . FALSE
+    (30) expresion -> . ID
+
+    PARA            shift and go to state 17
+    MENOS           shift and go to state 16
+    ENTERO          shift and go to state 18
+    DECIMAL         shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    ID              shift and go to state 22
+
+    expresion                      shift and go to state 41
+
+state 29
+
+    (18) expresion -> expresion MENOS . expresion
+    (17) expresion -> . expresion MAS expresion
+    (18) expresion -> . expresion MENOS expresion
+    (19) expresion -> . expresion MULTI expresion
+    (20) expresion -> . expresion DIV expresion
+    (21) expresion -> . expresion MENOR expresion
+    (22) expresion -> . expresion IGUALIGUAL expresion
+    (23) expresion -> . expresion MAYOR expresion
+    (24) expresion -> . PARA expresion PARC
+    (25) expresion -> . MENOS expresion
+    (26) expresion -> . ENTERO
+    (27) expresion -> . DECIMAL
+    (28) expresion -> . TRUE
+    (29) expresion -> . FALSE
+    (30) expresion -> . ID
+
+    PARA            shift and go to state 17
+    MENOS           shift and go to state 16
+    ENTERO          shift and go to state 18
+    DECIMAL         shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    ID              shift and go to state 22
+
+    expresion                      shift and go to state 42
+
+state 30
+
+    (19) expresion -> expresion MULTI . expresion
+    (17) expresion -> . expresion MAS expresion
+    (18) expresion -> . expresion MENOS expresion
+    (19) expresion -> . expresion MULTI expresion
+    (20) expresion -> . expresion DIV expresion
+    (21) expresion -> . expresion MENOR expresion
+    (22) expresion -> . expresion IGUALIGUAL expresion
+    (23) expresion -> . expresion MAYOR expresion
+    (24) expresion -> . PARA expresion PARC
+    (25) expresion -> . MENOS expresion
+    (26) expresion -> . ENTERO
+    (27) expresion -> . DECIMAL
+    (28) expresion -> . TRUE
+    (29) expresion -> . FALSE
+    (30) expresion -> . ID
+
+    PARA            shift and go to state 17
+    MENOS           shift and go to state 16
+    ENTERO          shift and go to state 18
+    DECIMAL         shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    ID              shift and go to state 22
+
+    expresion                      shift and go to state 43
+
+state 31
+
+    (20) expresion -> expresion DIV . expresion
+    (17) expresion -> . expresion MAS expresion
+    (18) expresion -> . expresion MENOS expresion
+    (19) expresion -> . expresion MULTI expresion
+    (20) expresion -> . expresion DIV expresion
+    (21) expresion -> . expresion MENOR expresion
+    (22) expresion -> . expresion IGUALIGUAL expresion
+    (23) expresion -> . expresion MAYOR expresion
+    (24) expresion -> . PARA expresion PARC
+    (25) expresion -> . MENOS expresion
+    (26) expresion -> . ENTERO
+    (27) expresion -> . DECIMAL
+    (28) expresion -> . TRUE
+    (29) expresion -> . FALSE
+    (30) expresion -> . ID
+
+    PARA            shift and go to state 17
+    MENOS           shift and go to state 16
+    ENTERO          shift and go to state 18
+    DECIMAL         shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    ID              shift and go to state 22
+
+    expresion                      shift and go to state 44
+
+state 32
+
+    (21) expresion -> expresion MENOR . expresion
+    (17) expresion -> . expresion MAS expresion
+    (18) expresion -> . expresion MENOS expresion
+    (19) expresion -> . expresion MULTI expresion
+    (20) expresion -> . expresion DIV expresion
+    (21) expresion -> . expresion MENOR expresion
+    (22) expresion -> . expresion IGUALIGUAL expresion
+    (23) expresion -> . expresion MAYOR expresion
+    (24) expresion -> . PARA expresion PARC
+    (25) expresion -> . MENOS expresion
+    (26) expresion -> . ENTERO
+    (27) expresion -> . DECIMAL
+    (28) expresion -> . TRUE
+    (29) expresion -> . FALSE
+    (30) expresion -> . ID
+
+    PARA            shift and go to state 17
+    MENOS           shift and go to state 16
+    ENTERO          shift and go to state 18
+    DECIMAL         shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    ID              shift and go to state 22
+
+    expresion                      shift and go to state 45
+
+state 33
+
+    (22) expresion -> expresion IGUALIGUAL . expresion
+    (17) expresion -> . expresion MAS expresion
+    (18) expresion -> . expresion MENOS expresion
+    (19) expresion -> . expresion MULTI expresion
+    (20) expresion -> . expresion DIV expresion
+    (21) expresion -> . expresion MENOR expresion
+    (22) expresion -> . expresion IGUALIGUAL expresion
+    (23) expresion -> . expresion MAYOR expresion
+    (24) expresion -> . PARA expresion PARC
+    (25) expresion -> . MENOS expresion
+    (26) expresion -> . ENTERO
+    (27) expresion -> . DECIMAL
+    (28) expresion -> . TRUE
+    (29) expresion -> . FALSE
+    (30) expresion -> . ID
+
+    PARA            shift and go to state 17
+    MENOS           shift and go to state 16
+    ENTERO          shift and go to state 18
+    DECIMAL         shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    ID              shift and go to state 22
+
+    expresion                      shift and go to state 46
+
+state 34
+
+    (23) expresion -> expresion MAYOR . expresion
+    (17) expresion -> . expresion MAS expresion
+    (18) expresion -> . expresion MENOS expresion
+    (19) expresion -> . expresion MULTI expresion
+    (20) expresion -> . expresion DIV expresion
+    (21) expresion -> . expresion MENOR expresion
+    (22) expresion -> . expresion IGUALIGUAL expresion
+    (23) expresion -> . expresion MAYOR expresion
+    (24) expresion -> . PARA expresion PARC
+    (25) expresion -> . MENOS expresion
+    (26) expresion -> . ENTERO
+    (27) expresion -> . DECIMAL
+    (28) expresion -> . TRUE
+    (29) expresion -> . FALSE
+    (30) expresion -> . ID
+
+    PARA            shift and go to state 17
+    MENOS           shift and go to state 16
+    ENTERO          shift and go to state 18
+    DECIMAL         shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    ID              shift and go to state 22
+
+    expresion                      shift and go to state 47
+
+state 35
+
+    (25) expresion -> MENOS expresion .
+    (17) expresion -> expresion . MAS expresion
+    (18) expresion -> expresion . MENOS expresion
+    (19) expresion -> expresion . MULTI expresion
+    (20) expresion -> expresion . DIV expresion
+    (21) expresion -> expresion . MENOR expresion
+    (22) expresion -> expresion . IGUALIGUAL expresion
+    (23) expresion -> expresion . MAYOR expresion
+
+    LLAVA           reduce using rule 25 (expresion -> MENOS expresion .)
+    MAS             reduce using rule 25 (expresion -> MENOS expresion .)
+    MENOS           reduce using rule 25 (expresion -> MENOS expresion .)
+    MULTI           reduce using rule 25 (expresion -> MENOS expresion .)
+    DIV             reduce using rule 25 (expresion -> MENOS expresion .)
+    MENOR           reduce using rule 25 (expresion -> MENOS expresion .)
+    IGUALIGUAL      reduce using rule 25 (expresion -> MENOS expresion .)
+    MAYOR           reduce using rule 25 (expresion -> MENOS expresion .)
+    PARC            reduce using rule 25 (expresion -> MENOS expresion .)
+    PYC             reduce using rule 25 (expresion -> MENOS expresion .)
+
+  ! MAS             [ shift and go to state 28 ]
+  ! MENOS           [ shift and go to state 29 ]
+  ! MULTI           [ shift and go to state 30 ]
+  ! DIV             [ shift and go to state 31 ]
+  ! MENOR           [ shift and go to state 32 ]
+  ! IGUALIGUAL      [ shift and go to state 33 ]
+  ! MAYOR           [ shift and go to state 34 ]
+
+
+state 36
+
+    (24) expresion -> PARA expresion . PARC
+    (17) expresion -> expresion . MAS expresion
+    (18) expresion -> expresion . MENOS expresion
+    (19) expresion -> expresion . MULTI expresion
+    (20) expresion -> expresion . DIV expresion
+    (21) expresion -> expresion . MENOR expresion
+    (22) expresion -> expresion . IGUALIGUAL expresion
+    (23) expresion -> expresion . MAYOR expresion
+
+    PARC            shift and go to state 48
+    MAS             shift and go to state 28
+    MENOS           shift and go to state 29
+    MULTI           shift and go to state 30
+    DIV             shift and go to state 31
+    MENOR           shift and go to state 32
+    IGUALIGUAL      shift and go to state 33
+    MAYOR           shift and go to state 34
+
+
+state 37
+
+    (8) asignacion -> LET ID DOSPTS . tipo IGUAL expresion
+    (9) tipo -> . INT64
+    (10) tipo -> . FLOAT64
+    (11) tipo -> . BOOL
+
+    INT64           shift and go to state 50
+    FLOAT64         shift and go to state 51
+    BOOL            shift and go to state 52
+
+    tipo                           shift and go to state 49
+
+state 38
+
+    (31) funcion -> FUNC ID PARA . parametros PARC LLAVA instrucciones LLAVC
+    (32) funcion -> FUNC ID PARA . PARC LLAVA instrucciones LLAVC
+    (33) parametros -> . parametros COMA ID
+    (34) parametros -> . ID
+
+    PARC            shift and go to state 55
+    ID              shift and go to state 53
+
+    parametros                     shift and go to state 54
+
+state 39
+
+    (12) ejecutar -> EJECUTAR PARA expresion PARC .
+
+    PYC             reduce using rule 12 (ejecutar -> EJECUTAR PARA expresion PARC .)
+
+
+state 40
+
+    (13) sent_if -> IF expresion LLAVA instrucciones . LLAVC
+    (14) sent_if -> IF expresion LLAVA instrucciones . LLAVC ELSE LLAVA instrucciones LLAVC
+    (15) sent_if -> IF expresion LLAVA instrucciones . else_if
+    (2) instrucciones -> instrucciones . instruccion PYC
+    (16) else_if -> . ELSE IF expresion LLAVA instrucciones LLAVC
+    (4) instruccion -> . ejecutar
+    (5) instruccion -> . sent_if
+    (6) instruccion -> . asignacion
+    (7) instruccion -> . funcion
+    (12) ejecutar -> . EJECUTAR PARA expresion PARC
+    (13) sent_if -> . IF expresion LLAVA instrucciones LLAVC
+    (14) sent_if -> . IF expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC
+    (15) sent_if -> . IF expresion LLAVA instrucciones else_if
+    (8) asignacion -> . LET ID DOSPTS tipo IGUAL expresion
+    (31) funcion -> . FUNC ID PARA parametros PARC LLAVA instrucciones LLAVC
+    (32) funcion -> . FUNC ID PARA PARC LLAVA instrucciones LLAVC
+
+    LLAVC           shift and go to state 56
+    ELSE            shift and go to state 57
+    EJECUTAR        shift and go to state 8
+    IF              shift and go to state 9
+    LET             shift and go to state 10
+    FUNC            shift and go to state 11
+
+    else_if                        shift and go to state 58
+    instruccion                    shift and go to state 12
+    ejecutar                       shift and go to state 4
+    sent_if                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    funcion                        shift and go to state 7
+
+state 41
+
+    (17) expresion -> expresion MAS expresion .
+    (17) expresion -> expresion . MAS expresion
+    (18) expresion -> expresion . MENOS expresion
+    (19) expresion -> expresion . MULTI expresion
+    (20) expresion -> expresion . DIV expresion
+    (21) expresion -> expresion . MENOR expresion
+    (22) expresion -> expresion . IGUALIGUAL expresion
+    (23) expresion -> expresion . MAYOR expresion
+
+    LLAVA           reduce using rule 17 (expresion -> expresion MAS expresion .)
+    MAS             reduce using rule 17 (expresion -> expresion MAS expresion .)
+    MENOS           reduce using rule 17 (expresion -> expresion MAS expresion .)
+    MENOR           reduce using rule 17 (expresion -> expresion MAS expresion .)
+    IGUALIGUAL      reduce using rule 17 (expresion -> expresion MAS expresion .)
+    MAYOR           reduce using rule 17 (expresion -> expresion MAS expresion .)
+    PARC            reduce using rule 17 (expresion -> expresion MAS expresion .)
+    PYC             reduce using rule 17 (expresion -> expresion MAS expresion .)
+    MULTI           shift and go to state 30
+    DIV             shift and go to state 31
+
+  ! MULTI           [ reduce using rule 17 (expresion -> expresion MAS expresion .) ]
+  ! DIV             [ reduce using rule 17 (expresion -> expresion MAS expresion .) ]
+  ! MAS             [ shift and go to state 28 ]
+  ! MENOS           [ shift and go to state 29 ]
+  ! MENOR           [ shift and go to state 32 ]
+  ! IGUALIGUAL      [ shift and go to state 33 ]
+  ! MAYOR           [ shift and go to state 34 ]
+
+
+state 42
+
+    (18) expresion -> expresion MENOS expresion .
+    (17) expresion -> expresion . MAS expresion
+    (18) expresion -> expresion . MENOS expresion
+    (19) expresion -> expresion . MULTI expresion
+    (20) expresion -> expresion . DIV expresion
+    (21) expresion -> expresion . MENOR expresion
+    (22) expresion -> expresion . IGUALIGUAL expresion
+    (23) expresion -> expresion . MAYOR expresion
+
+    LLAVA           reduce using rule 18 (expresion -> expresion MENOS expresion .)
+    MAS             reduce using rule 18 (expresion -> expresion MENOS expresion .)
+    MENOS           reduce using rule 18 (expresion -> expresion MENOS expresion .)
+    MENOR           reduce using rule 18 (expresion -> expresion MENOS expresion .)
+    IGUALIGUAL      reduce using rule 18 (expresion -> expresion MENOS expresion .)
+    MAYOR           reduce using rule 18 (expresion -> expresion MENOS expresion .)
+    PARC            reduce using rule 18 (expresion -> expresion MENOS expresion .)
+    PYC             reduce using rule 18 (expresion -> expresion MENOS expresion .)
+    MULTI           shift and go to state 30
+    DIV             shift and go to state 31
+
+  ! MULTI           [ reduce using rule 18 (expresion -> expresion MENOS expresion .) ]
+  ! DIV             [ reduce using rule 18 (expresion -> expresion MENOS expresion .) ]
+  ! MAS             [ shift and go to state 28 ]
+  ! MENOS           [ shift and go to state 29 ]
+  ! MENOR           [ shift and go to state 32 ]
+  ! IGUALIGUAL      [ shift and go to state 33 ]
+  ! MAYOR           [ shift and go to state 34 ]
+
+
+state 43
+
+    (19) expresion -> expresion MULTI expresion .
+    (17) expresion -> expresion . MAS expresion
+    (18) expresion -> expresion . MENOS expresion
+    (19) expresion -> expresion . MULTI expresion
+    (20) expresion -> expresion . DIV expresion
+    (21) expresion -> expresion . MENOR expresion
+    (22) expresion -> expresion . IGUALIGUAL expresion
+    (23) expresion -> expresion . MAYOR expresion
+
+    LLAVA           reduce using rule 19 (expresion -> expresion MULTI expresion .)
+    MAS             reduce using rule 19 (expresion -> expresion MULTI expresion .)
+    MENOS           reduce using rule 19 (expresion -> expresion MULTI expresion .)
+    MULTI           reduce using rule 19 (expresion -> expresion MULTI expresion .)
+    DIV             reduce using rule 19 (expresion -> expresion MULTI expresion .)
+    MENOR           reduce using rule 19 (expresion -> expresion MULTI expresion .)
+    IGUALIGUAL      reduce using rule 19 (expresion -> expresion MULTI expresion .)
+    MAYOR           reduce using rule 19 (expresion -> expresion MULTI expresion .)
+    PARC            reduce using rule 19 (expresion -> expresion MULTI expresion .)
+    PYC             reduce using rule 19 (expresion -> expresion MULTI expresion .)
+
+  ! MAS             [ shift and go to state 28 ]
+  ! MENOS           [ shift and go to state 29 ]
+  ! MULTI           [ shift and go to state 30 ]
+  ! DIV             [ shift and go to state 31 ]
+  ! MENOR           [ shift and go to state 32 ]
+  ! IGUALIGUAL      [ shift and go to state 33 ]
+  ! MAYOR           [ shift and go to state 34 ]
+
+
+state 44
+
+    (20) expresion -> expresion DIV expresion .
+    (17) expresion -> expresion . MAS expresion
+    (18) expresion -> expresion . MENOS expresion
+    (19) expresion -> expresion . MULTI expresion
+    (20) expresion -> expresion . DIV expresion
+    (21) expresion -> expresion . MENOR expresion
+    (22) expresion -> expresion . IGUALIGUAL expresion
+    (23) expresion -> expresion . MAYOR expresion
+
+    LLAVA           reduce using rule 20 (expresion -> expresion DIV expresion .)
+    MAS             reduce using rule 20 (expresion -> expresion DIV expresion .)
+    MENOS           reduce using rule 20 (expresion -> expresion DIV expresion .)
+    MULTI           reduce using rule 20 (expresion -> expresion DIV expresion .)
+    DIV             reduce using rule 20 (expresion -> expresion DIV expresion .)
+    MENOR           reduce using rule 20 (expresion -> expresion DIV expresion .)
+    IGUALIGUAL      reduce using rule 20 (expresion -> expresion DIV expresion .)
+    MAYOR           reduce using rule 20 (expresion -> expresion DIV expresion .)
+    PARC            reduce using rule 20 (expresion -> expresion DIV expresion .)
+    PYC             reduce using rule 20 (expresion -> expresion DIV expresion .)
+
+  ! MAS             [ shift and go to state 28 ]
+  ! MENOS           [ shift and go to state 29 ]
+  ! MULTI           [ shift and go to state 30 ]
+  ! DIV             [ shift and go to state 31 ]
+  ! MENOR           [ shift and go to state 32 ]
+  ! IGUALIGUAL      [ shift and go to state 33 ]
+  ! MAYOR           [ shift and go to state 34 ]
+
+
+state 45
+
+    (21) expresion -> expresion MENOR expresion .
+    (17) expresion -> expresion . MAS expresion
+    (18) expresion -> expresion . MENOS expresion
+    (19) expresion -> expresion . MULTI expresion
+    (20) expresion -> expresion . DIV expresion
+    (21) expresion -> expresion . MENOR expresion
+    (22) expresion -> expresion . IGUALIGUAL expresion
+    (23) expresion -> expresion . MAYOR expresion
+
+    LLAVA           reduce using rule 21 (expresion -> expresion MENOR expresion .)
+    MENOR           reduce using rule 21 (expresion -> expresion MENOR expresion .)
+    IGUALIGUAL      reduce using rule 21 (expresion -> expresion MENOR expresion .)
+    MAYOR           reduce using rule 21 (expresion -> expresion MENOR expresion .)
+    PARC            reduce using rule 21 (expresion -> expresion MENOR expresion .)
+    PYC             reduce using rule 21 (expresion -> expresion MENOR expresion .)
+    MAS             shift and go to state 28
+    MENOS           shift and go to state 29
+    MULTI           shift and go to state 30
+    DIV             shift and go to state 31
+
+  ! MAS             [ reduce using rule 21 (expresion -> expresion MENOR expresion .) ]
+  ! MENOS           [ reduce using rule 21 (expresion -> expresion MENOR expresion .) ]
+  ! MULTI           [ reduce using rule 21 (expresion -> expresion MENOR expresion .) ]
+  ! DIV             [ reduce using rule 21 (expresion -> expresion MENOR expresion .) ]
+  ! MENOR           [ shift and go to state 32 ]
+  ! IGUALIGUAL      [ shift and go to state 33 ]
+  ! MAYOR           [ shift and go to state 34 ]
+
+
+state 46
+
+    (22) expresion -> expresion IGUALIGUAL expresion .
+    (17) expresion -> expresion . MAS expresion
+    (18) expresion -> expresion . MENOS expresion
+    (19) expresion -> expresion . MULTI expresion
+    (20) expresion -> expresion . DIV expresion
+    (21) expresion -> expresion . MENOR expresion
+    (22) expresion -> expresion . IGUALIGUAL expresion
+    (23) expresion -> expresion . MAYOR expresion
+
+    LLAVA           reduce using rule 22 (expresion -> expresion IGUALIGUAL expresion .)
+    MENOR           reduce using rule 22 (expresion -> expresion IGUALIGUAL expresion .)
+    IGUALIGUAL      reduce using rule 22 (expresion -> expresion IGUALIGUAL expresion .)
+    MAYOR           reduce using rule 22 (expresion -> expresion IGUALIGUAL expresion .)
+    PARC            reduce using rule 22 (expresion -> expresion IGUALIGUAL expresion .)
+    PYC             reduce using rule 22 (expresion -> expresion IGUALIGUAL expresion .)
+    MAS             shift and go to state 28
+    MENOS           shift and go to state 29
+    MULTI           shift and go to state 30
+    DIV             shift and go to state 31
+
+  ! MAS             [ reduce using rule 22 (expresion -> expresion IGUALIGUAL expresion .) ]
+  ! MENOS           [ reduce using rule 22 (expresion -> expresion IGUALIGUAL expresion .) ]
+  ! MULTI           [ reduce using rule 22 (expresion -> expresion IGUALIGUAL expresion .) ]
+  ! DIV             [ reduce using rule 22 (expresion -> expresion IGUALIGUAL expresion .) ]
+  ! MENOR           [ shift and go to state 32 ]
+  ! IGUALIGUAL      [ shift and go to state 33 ]
+  ! MAYOR           [ shift and go to state 34 ]
+
+
+state 47
+
+    (23) expresion -> expresion MAYOR expresion .
+    (17) expresion -> expresion . MAS expresion
+    (18) expresion -> expresion . MENOS expresion
+    (19) expresion -> expresion . MULTI expresion
+    (20) expresion -> expresion . DIV expresion
+    (21) expresion -> expresion . MENOR expresion
+    (22) expresion -> expresion . IGUALIGUAL expresion
+    (23) expresion -> expresion . MAYOR expresion
+
+    LLAVA           reduce using rule 23 (expresion -> expresion MAYOR expresion .)
+    MENOR           reduce using rule 23 (expresion -> expresion MAYOR expresion .)
+    IGUALIGUAL      reduce using rule 23 (expresion -> expresion MAYOR expresion .)
+    MAYOR           reduce using rule 23 (expresion -> expresion MAYOR expresion .)
+    PARC            reduce using rule 23 (expresion -> expresion MAYOR expresion .)
+    PYC             reduce using rule 23 (expresion -> expresion MAYOR expresion .)
+    MAS             shift and go to state 28
+    MENOS           shift and go to state 29
+    MULTI           shift and go to state 30
+    DIV             shift and go to state 31
+
+  ! MAS             [ reduce using rule 23 (expresion -> expresion MAYOR expresion .) ]
+  ! MENOS           [ reduce using rule 23 (expresion -> expresion MAYOR expresion .) ]
+  ! MULTI           [ reduce using rule 23 (expresion -> expresion MAYOR expresion .) ]
+  ! DIV             [ reduce using rule 23 (expresion -> expresion MAYOR expresion .) ]
+  ! MENOR           [ shift and go to state 32 ]
+  ! IGUALIGUAL      [ shift and go to state 33 ]
+  ! MAYOR           [ shift and go to state 34 ]
+
+
+state 48
+
+    (24) expresion -> PARA expresion PARC .
+
+    LLAVA           reduce using rule 24 (expresion -> PARA expresion PARC .)
+    MAS             reduce using rule 24 (expresion -> PARA expresion PARC .)
+    MENOS           reduce using rule 24 (expresion -> PARA expresion PARC .)
+    MULTI           reduce using rule 24 (expresion -> PARA expresion PARC .)
+    DIV             reduce using rule 24 (expresion -> PARA expresion PARC .)
+    MENOR           reduce using rule 24 (expresion -> PARA expresion PARC .)
+    IGUALIGUAL      reduce using rule 24 (expresion -> PARA expresion PARC .)
+    MAYOR           reduce using rule 24 (expresion -> PARA expresion PARC .)
+    PARC            reduce using rule 24 (expresion -> PARA expresion PARC .)
+    PYC             reduce using rule 24 (expresion -> PARA expresion PARC .)
+
+
+state 49
+
+    (8) asignacion -> LET ID DOSPTS tipo . IGUAL expresion
+
+    IGUAL           shift and go to state 59
+
+
+state 50
+
+    (9) tipo -> INT64 .
+
+    IGUAL           reduce using rule 9 (tipo -> INT64 .)
+
+
+state 51
+
+    (10) tipo -> FLOAT64 .
+
+    IGUAL           reduce using rule 10 (tipo -> FLOAT64 .)
+
+
+state 52
+
+    (11) tipo -> BOOL .
+
+    IGUAL           reduce using rule 11 (tipo -> BOOL .)
+
+
+state 53
+
+    (34) parametros -> ID .
+
+    PARC            reduce using rule 34 (parametros -> ID .)
+    COMA            reduce using rule 34 (parametros -> ID .)
+
+
+state 54
+
+    (31) funcion -> FUNC ID PARA parametros . PARC LLAVA instrucciones LLAVC
+    (33) parametros -> parametros . COMA ID
+
+    PARC            shift and go to state 60
+    COMA            shift and go to state 61
+
+
+state 55
+
+    (32) funcion -> FUNC ID PARA PARC . LLAVA instrucciones LLAVC
+
+    LLAVA           shift and go to state 62
+
+
+state 56
+
+    (13) sent_if -> IF expresion LLAVA instrucciones LLAVC .
+    (14) sent_if -> IF expresion LLAVA instrucciones LLAVC . ELSE LLAVA instrucciones LLAVC
+
+    PYC             reduce using rule 13 (sent_if -> IF expresion LLAVA instrucciones LLAVC .)
+    ELSE            shift and go to state 63
+
+
+state 57
+
+    (16) else_if -> ELSE . IF expresion LLAVA instrucciones LLAVC
+
+    IF              shift and go to state 64
+
+
+state 58
+
+    (15) sent_if -> IF expresion LLAVA instrucciones else_if .
+
+    PYC             reduce using rule 15 (sent_if -> IF expresion LLAVA instrucciones else_if .)
+
+
+state 59
+
+    (8) asignacion -> LET ID DOSPTS tipo IGUAL . expresion
+    (17) expresion -> . expresion MAS expresion
+    (18) expresion -> . expresion MENOS expresion
+    (19) expresion -> . expresion MULTI expresion
+    (20) expresion -> . expresion DIV expresion
+    (21) expresion -> . expresion MENOR expresion
+    (22) expresion -> . expresion IGUALIGUAL expresion
+    (23) expresion -> . expresion MAYOR expresion
+    (24) expresion -> . PARA expresion PARC
+    (25) expresion -> . MENOS expresion
+    (26) expresion -> . ENTERO
+    (27) expresion -> . DECIMAL
+    (28) expresion -> . TRUE
+    (29) expresion -> . FALSE
+    (30) expresion -> . ID
+
+    PARA            shift and go to state 17
+    MENOS           shift and go to state 16
+    ENTERO          shift and go to state 18
+    DECIMAL         shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    ID              shift and go to state 22
+
+    expresion                      shift and go to state 65
+
+state 60
+
+    (31) funcion -> FUNC ID PARA parametros PARC . LLAVA instrucciones LLAVC
+
+    LLAVA           shift and go to state 66
+
+
+state 61
+
+    (33) parametros -> parametros COMA . ID
+
+    ID              shift and go to state 67
+
+
+state 62
+
+    (32) funcion -> FUNC ID PARA PARC LLAVA . instrucciones LLAVC
+    (2) instrucciones -> . instrucciones instruccion PYC
+    (3) instrucciones -> . instruccion PYC
+    (4) instruccion -> . ejecutar
+    (5) instruccion -> . sent_if
+    (6) instruccion -> . asignacion
+    (7) instruccion -> . funcion
+    (12) ejecutar -> . EJECUTAR PARA expresion PARC
+    (13) sent_if -> . IF expresion LLAVA instrucciones LLAVC
+    (14) sent_if -> . IF expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC
+    (15) sent_if -> . IF expresion LLAVA instrucciones else_if
+    (8) asignacion -> . LET ID DOSPTS tipo IGUAL expresion
+    (31) funcion -> . FUNC ID PARA parametros PARC LLAVA instrucciones LLAVC
+    (32) funcion -> . FUNC ID PARA PARC LLAVA instrucciones LLAVC
+
+    EJECUTAR        shift and go to state 8
+    IF              shift and go to state 9
+    LET             shift and go to state 10
+    FUNC            shift and go to state 11
+
+    instrucciones                  shift and go to state 68
+    instruccion                    shift and go to state 3
+    ejecutar                       shift and go to state 4
+    sent_if                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    funcion                        shift and go to state 7
+
+state 63
+
+    (14) sent_if -> IF expresion LLAVA instrucciones LLAVC ELSE . LLAVA instrucciones LLAVC
+
+    LLAVA           shift and go to state 69
+
+
+state 64
+
+    (16) else_if -> ELSE IF . expresion LLAVA instrucciones LLAVC
+    (17) expresion -> . expresion MAS expresion
+    (18) expresion -> . expresion MENOS expresion
+    (19) expresion -> . expresion MULTI expresion
+    (20) expresion -> . expresion DIV expresion
+    (21) expresion -> . expresion MENOR expresion
+    (22) expresion -> . expresion IGUALIGUAL expresion
+    (23) expresion -> . expresion MAYOR expresion
+    (24) expresion -> . PARA expresion PARC
+    (25) expresion -> . MENOS expresion
+    (26) expresion -> . ENTERO
+    (27) expresion -> . DECIMAL
+    (28) expresion -> . TRUE
+    (29) expresion -> . FALSE
+    (30) expresion -> . ID
+
+    PARA            shift and go to state 17
+    MENOS           shift and go to state 16
+    ENTERO          shift and go to state 18
+    DECIMAL         shift and go to state 19
+    TRUE            shift and go to state 20
+    FALSE           shift and go to state 21
+    ID              shift and go to state 22
+
+    expresion                      shift and go to state 70
+
+state 65
+
+    (8) asignacion -> LET ID DOSPTS tipo IGUAL expresion .
+    (17) expresion -> expresion . MAS expresion
+    (18) expresion -> expresion . MENOS expresion
+    (19) expresion -> expresion . MULTI expresion
+    (20) expresion -> expresion . DIV expresion
+    (21) expresion -> expresion . MENOR expresion
+    (22) expresion -> expresion . IGUALIGUAL expresion
+    (23) expresion -> expresion . MAYOR expresion
+
+    PYC             reduce using rule 8 (asignacion -> LET ID DOSPTS tipo IGUAL expresion .)
+    MAS             shift and go to state 28
+    MENOS           shift and go to state 29
+    MULTI           shift and go to state 30
+    DIV             shift and go to state 31
+    MENOR           shift and go to state 32
+    IGUALIGUAL      shift and go to state 33
+    MAYOR           shift and go to state 34
+
+
+state 66
+
+    (31) funcion -> FUNC ID PARA parametros PARC LLAVA . instrucciones LLAVC
+    (2) instrucciones -> . instrucciones instruccion PYC
+    (3) instrucciones -> . instruccion PYC
+    (4) instruccion -> . ejecutar
+    (5) instruccion -> . sent_if
+    (6) instruccion -> . asignacion
+    (7) instruccion -> . funcion
+    (12) ejecutar -> . EJECUTAR PARA expresion PARC
+    (13) sent_if -> . IF expresion LLAVA instrucciones LLAVC
+    (14) sent_if -> . IF expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC
+    (15) sent_if -> . IF expresion LLAVA instrucciones else_if
+    (8) asignacion -> . LET ID DOSPTS tipo IGUAL expresion
+    (31) funcion -> . FUNC ID PARA parametros PARC LLAVA instrucciones LLAVC
+    (32) funcion -> . FUNC ID PARA PARC LLAVA instrucciones LLAVC
+
+    EJECUTAR        shift and go to state 8
+    IF              shift and go to state 9
+    LET             shift and go to state 10
+    FUNC            shift and go to state 11
+
+    instrucciones                  shift and go to state 71
+    instruccion                    shift and go to state 3
+    ejecutar                       shift and go to state 4
+    sent_if                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    funcion                        shift and go to state 7
+
+state 67
+
+    (33) parametros -> parametros COMA ID .
+
+    PARC            reduce using rule 33 (parametros -> parametros COMA ID .)
+    COMA            reduce using rule 33 (parametros -> parametros COMA ID .)
+
+
+state 68
+
+    (32) funcion -> FUNC ID PARA PARC LLAVA instrucciones . LLAVC
+    (2) instrucciones -> instrucciones . instruccion PYC
+    (4) instruccion -> . ejecutar
+    (5) instruccion -> . sent_if
+    (6) instruccion -> . asignacion
+    (7) instruccion -> . funcion
+    (12) ejecutar -> . EJECUTAR PARA expresion PARC
+    (13) sent_if -> . IF expresion LLAVA instrucciones LLAVC
+    (14) sent_if -> . IF expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC
+    (15) sent_if -> . IF expresion LLAVA instrucciones else_if
+    (8) asignacion -> . LET ID DOSPTS tipo IGUAL expresion
+    (31) funcion -> . FUNC ID PARA parametros PARC LLAVA instrucciones LLAVC
+    (32) funcion -> . FUNC ID PARA PARC LLAVA instrucciones LLAVC
+
+    LLAVC           shift and go to state 72
+    EJECUTAR        shift and go to state 8
+    IF              shift and go to state 9
+    LET             shift and go to state 10
+    FUNC            shift and go to state 11
+
+    instruccion                    shift and go to state 12
+    ejecutar                       shift and go to state 4
+    sent_if                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    funcion                        shift and go to state 7
+
+state 69
+
+    (14) sent_if -> IF expresion LLAVA instrucciones LLAVC ELSE LLAVA . instrucciones LLAVC
+    (2) instrucciones -> . instrucciones instruccion PYC
+    (3) instrucciones -> . instruccion PYC
+    (4) instruccion -> . ejecutar
+    (5) instruccion -> . sent_if
+    (6) instruccion -> . asignacion
+    (7) instruccion -> . funcion
+    (12) ejecutar -> . EJECUTAR PARA expresion PARC
+    (13) sent_if -> . IF expresion LLAVA instrucciones LLAVC
+    (14) sent_if -> . IF expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC
+    (15) sent_if -> . IF expresion LLAVA instrucciones else_if
+    (8) asignacion -> . LET ID DOSPTS tipo IGUAL expresion
+    (31) funcion -> . FUNC ID PARA parametros PARC LLAVA instrucciones LLAVC
+    (32) funcion -> . FUNC ID PARA PARC LLAVA instrucciones LLAVC
+
+    EJECUTAR        shift and go to state 8
+    IF              shift and go to state 9
+    LET             shift and go to state 10
+    FUNC            shift and go to state 11
+
+    instrucciones                  shift and go to state 73
+    instruccion                    shift and go to state 3
+    ejecutar                       shift and go to state 4
+    sent_if                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    funcion                        shift and go to state 7
+
+state 70
+
+    (16) else_if -> ELSE IF expresion . LLAVA instrucciones LLAVC
+    (17) expresion -> expresion . MAS expresion
+    (18) expresion -> expresion . MENOS expresion
+    (19) expresion -> expresion . MULTI expresion
+    (20) expresion -> expresion . DIV expresion
+    (21) expresion -> expresion . MENOR expresion
+    (22) expresion -> expresion . IGUALIGUAL expresion
+    (23) expresion -> expresion . MAYOR expresion
+
+    LLAVA           shift and go to state 74
+    MAS             shift and go to state 28
+    MENOS           shift and go to state 29
+    MULTI           shift and go to state 30
+    DIV             shift and go to state 31
+    MENOR           shift and go to state 32
+    IGUALIGUAL      shift and go to state 33
+    MAYOR           shift and go to state 34
+
+
+state 71
+
+    (31) funcion -> FUNC ID PARA parametros PARC LLAVA instrucciones . LLAVC
+    (2) instrucciones -> instrucciones . instruccion PYC
+    (4) instruccion -> . ejecutar
+    (5) instruccion -> . sent_if
+    (6) instruccion -> . asignacion
+    (7) instruccion -> . funcion
+    (12) ejecutar -> . EJECUTAR PARA expresion PARC
+    (13) sent_if -> . IF expresion LLAVA instrucciones LLAVC
+    (14) sent_if -> . IF expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC
+    (15) sent_if -> . IF expresion LLAVA instrucciones else_if
+    (8) asignacion -> . LET ID DOSPTS tipo IGUAL expresion
+    (31) funcion -> . FUNC ID PARA parametros PARC LLAVA instrucciones LLAVC
+    (32) funcion -> . FUNC ID PARA PARC LLAVA instrucciones LLAVC
+
+    LLAVC           shift and go to state 75
+    EJECUTAR        shift and go to state 8
+    IF              shift and go to state 9
+    LET             shift and go to state 10
+    FUNC            shift and go to state 11
+
+    instruccion                    shift and go to state 12
+    ejecutar                       shift and go to state 4
+    sent_if                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    funcion                        shift and go to state 7
+
+state 72
+
+    (32) funcion -> FUNC ID PARA PARC LLAVA instrucciones LLAVC .
+
+    PYC             reduce using rule 32 (funcion -> FUNC ID PARA PARC LLAVA instrucciones LLAVC .)
+
+
+state 73
+
+    (14) sent_if -> IF expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones . LLAVC
+    (2) instrucciones -> instrucciones . instruccion PYC
+    (4) instruccion -> . ejecutar
+    (5) instruccion -> . sent_if
+    (6) instruccion -> . asignacion
+    (7) instruccion -> . funcion
+    (12) ejecutar -> . EJECUTAR PARA expresion PARC
+    (13) sent_if -> . IF expresion LLAVA instrucciones LLAVC
+    (14) sent_if -> . IF expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC
+    (15) sent_if -> . IF expresion LLAVA instrucciones else_if
+    (8) asignacion -> . LET ID DOSPTS tipo IGUAL expresion
+    (31) funcion -> . FUNC ID PARA parametros PARC LLAVA instrucciones LLAVC
+    (32) funcion -> . FUNC ID PARA PARC LLAVA instrucciones LLAVC
+
+    LLAVC           shift and go to state 76
+    EJECUTAR        shift and go to state 8
+    IF              shift and go to state 9
+    LET             shift and go to state 10
+    FUNC            shift and go to state 11
+
+    instruccion                    shift and go to state 12
+    ejecutar                       shift and go to state 4
+    sent_if                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    funcion                        shift and go to state 7
+
+state 74
+
+    (16) else_if -> ELSE IF expresion LLAVA . instrucciones LLAVC
+    (2) instrucciones -> . instrucciones instruccion PYC
+    (3) instrucciones -> . instruccion PYC
+    (4) instruccion -> . ejecutar
+    (5) instruccion -> . sent_if
+    (6) instruccion -> . asignacion
+    (7) instruccion -> . funcion
+    (12) ejecutar -> . EJECUTAR PARA expresion PARC
+    (13) sent_if -> . IF expresion LLAVA instrucciones LLAVC
+    (14) sent_if -> . IF expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC
+    (15) sent_if -> . IF expresion LLAVA instrucciones else_if
+    (8) asignacion -> . LET ID DOSPTS tipo IGUAL expresion
+    (31) funcion -> . FUNC ID PARA parametros PARC LLAVA instrucciones LLAVC
+    (32) funcion -> . FUNC ID PARA PARC LLAVA instrucciones LLAVC
+
+    EJECUTAR        shift and go to state 8
+    IF              shift and go to state 9
+    LET             shift and go to state 10
+    FUNC            shift and go to state 11
+
+    instrucciones                  shift and go to state 77
+    instruccion                    shift and go to state 3
+    ejecutar                       shift and go to state 4
+    sent_if                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    funcion                        shift and go to state 7
+
+state 75
+
+    (31) funcion -> FUNC ID PARA parametros PARC LLAVA instrucciones LLAVC .
+
+    PYC             reduce using rule 31 (funcion -> FUNC ID PARA parametros PARC LLAVA instrucciones LLAVC .)
+
+
+state 76
+
+    (14) sent_if -> IF expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC .
+
+    PYC             reduce using rule 14 (sent_if -> IF expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC .)
+
+
+state 77
+
+    (16) else_if -> ELSE IF expresion LLAVA instrucciones . LLAVC
+    (2) instrucciones -> instrucciones . instruccion PYC
+    (4) instruccion -> . ejecutar
+    (5) instruccion -> . sent_if
+    (6) instruccion -> . asignacion
+    (7) instruccion -> . funcion
+    (12) ejecutar -> . EJECUTAR PARA expresion PARC
+    (13) sent_if -> . IF expresion LLAVA instrucciones LLAVC
+    (14) sent_if -> . IF expresion LLAVA instrucciones LLAVC ELSE LLAVA instrucciones LLAVC
+    (15) sent_if -> . IF expresion LLAVA instrucciones else_if
+    (8) asignacion -> . LET ID DOSPTS tipo IGUAL expresion
+    (31) funcion -> . FUNC ID PARA parametros PARC LLAVA instrucciones LLAVC
+    (32) funcion -> . FUNC ID PARA PARC LLAVA instrucciones LLAVC
+
+    LLAVC           shift and go to state 78
+    EJECUTAR        shift and go to state 8
+    IF              shift and go to state 9
+    LET             shift and go to state 10
+    FUNC            shift and go to state 11
+
+    instruccion                    shift and go to state 12
+    ejecutar                       shift and go to state 4
+    sent_if                        shift and go to state 5
+    asignacion                     shift and go to state 6
+    funcion                        shift and go to state 7
+
+state 78
+
+    (16) else_if -> ELSE IF expresion LLAVA instrucciones LLAVC .
+
+    PYC             reduce using rule 16 (else_if -> ELSE IF expresion LLAVA instrucciones LLAVC .)
+

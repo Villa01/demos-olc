@@ -1,0 +1,410 @@
+Created by PLY (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> inicio
+Rule 1     inicio -> instrucciones
+Rule 2     instrucciones -> instrucciones instruccion PYC
+Rule 3     instrucciones -> instruccion PYC
+Rule 4     instruccion -> EJECUTAR PARA expresion PARC
+Rule 5     expresion -> expresion MAS expresion
+Rule 6     expresion -> expresion MENOS expresion
+Rule 7     expresion -> expresion MULTI expresion
+Rule 8     expresion -> expresion DIV expresion
+Rule 9     expresion -> PARA expresion PARC
+Rule 10    expresion -> MENOS expresion
+Rule 11    expresion -> ENTERO
+Rule 12    expresion -> DECIMAL
+
+Terminals, with rules where they appear
+
+DECIMAL              : 12
+DIV                  : 8
+EJECUTAR             : 4
+ENTERO               : 11
+MAS                  : 5
+MENOS                : 6 10
+MULTI                : 7
+PARA                 : 4 9
+PARC                 : 4 9
+PYC                  : 2 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+expresion            : 4 5 5 6 6 7 7 8 8 9 10
+inicio               : 0
+instruccion          : 2 3
+instrucciones        : 1 2
+
+
+state 0
+
+    (0) S' -> . inicio
+    (1) inicio -> . instrucciones
+    (2) instrucciones -> . instrucciones instruccion PYC
+    (3) instrucciones -> . instruccion PYC
+    (4) instruccion -> . EJECUTAR PARA expresion PARC
+
+    EJECUTAR        shift and go to state 4
+
+    inicio                         shift and go to state 1
+    instrucciones                  shift and go to state 2
+    instruccion                    shift and go to state 3
+
+state 1
+
+    (0) S' -> inicio .
+
+
+
+state 2
+
+    (1) inicio -> instrucciones .
+    (2) instrucciones -> instrucciones . instruccion PYC
+    (4) instruccion -> . EJECUTAR PARA expresion PARC
+
+    $end            reduce using rule 1 (inicio -> instrucciones .)
+    EJECUTAR        shift and go to state 4
+
+    instruccion                    shift and go to state 5
+
+state 3
+
+    (3) instrucciones -> instruccion . PYC
+
+    PYC             shift and go to state 6
+
+
+state 4
+
+    (4) instruccion -> EJECUTAR . PARA expresion PARC
+
+    PARA            shift and go to state 7
+
+
+state 5
+
+    (2) instrucciones -> instrucciones instruccion . PYC
+
+    PYC             shift and go to state 8
+
+
+state 6
+
+    (3) instrucciones -> instruccion PYC .
+
+    EJECUTAR        reduce using rule 3 (instrucciones -> instruccion PYC .)
+    $end            reduce using rule 3 (instrucciones -> instruccion PYC .)
+
+
+state 7
+
+    (4) instruccion -> EJECUTAR PARA . expresion PARC
+    (5) expresion -> . expresion MAS expresion
+    (6) expresion -> . expresion MENOS expresion
+    (7) expresion -> . expresion MULTI expresion
+    (8) expresion -> . expresion DIV expresion
+    (9) expresion -> . PARA expresion PARC
+    (10) expresion -> . MENOS expresion
+    (11) expresion -> . ENTERO
+    (12) expresion -> . DECIMAL
+
+    PARA            shift and go to state 9
+    MENOS           shift and go to state 11
+    ENTERO          shift and go to state 12
+    DECIMAL         shift and go to state 13
+
+    expresion                      shift and go to state 10
+
+state 8
+
+    (2) instrucciones -> instrucciones instruccion PYC .
+
+    EJECUTAR        reduce using rule 2 (instrucciones -> instrucciones instruccion PYC .)
+    $end            reduce using rule 2 (instrucciones -> instrucciones instruccion PYC .)
+
+
+state 9
+
+    (9) expresion -> PARA . expresion PARC
+    (5) expresion -> . expresion MAS expresion
+    (6) expresion -> . expresion MENOS expresion
+    (7) expresion -> . expresion MULTI expresion
+    (8) expresion -> . expresion DIV expresion
+    (9) expresion -> . PARA expresion PARC
+    (10) expresion -> . MENOS expresion
+    (11) expresion -> . ENTERO
+    (12) expresion -> . DECIMAL
+
+    PARA            shift and go to state 9
+    MENOS           shift and go to state 11
+    ENTERO          shift and go to state 12
+    DECIMAL         shift and go to state 13
+
+    expresion                      shift and go to state 14
+
+state 10
+
+    (4) instruccion -> EJECUTAR PARA expresion . PARC
+    (5) expresion -> expresion . MAS expresion
+    (6) expresion -> expresion . MENOS expresion
+    (7) expresion -> expresion . MULTI expresion
+    (8) expresion -> expresion . DIV expresion
+
+    PARC            shift and go to state 15
+    MAS             shift and go to state 16
+    MENOS           shift and go to state 17
+    MULTI           shift and go to state 18
+    DIV             shift and go to state 19
+
+
+state 11
+
+    (10) expresion -> MENOS . expresion
+    (5) expresion -> . expresion MAS expresion
+    (6) expresion -> . expresion MENOS expresion
+    (7) expresion -> . expresion MULTI expresion
+    (8) expresion -> . expresion DIV expresion
+    (9) expresion -> . PARA expresion PARC
+    (10) expresion -> . MENOS expresion
+    (11) expresion -> . ENTERO
+    (12) expresion -> . DECIMAL
+
+    PARA            shift and go to state 9
+    MENOS           shift and go to state 11
+    ENTERO          shift and go to state 12
+    DECIMAL         shift and go to state 13
+
+    expresion                      shift and go to state 20
+
+state 12
+
+    (11) expresion -> ENTERO .
+
+    PARC            reduce using rule 11 (expresion -> ENTERO .)
+    MAS             reduce using rule 11 (expresion -> ENTERO .)
+    MENOS           reduce using rule 11 (expresion -> ENTERO .)
+    MULTI           reduce using rule 11 (expresion -> ENTERO .)
+    DIV             reduce using rule 11 (expresion -> ENTERO .)
+
+
+state 13
+
+    (12) expresion -> DECIMAL .
+
+    PARC            reduce using rule 12 (expresion -> DECIMAL .)
+    MAS             reduce using rule 12 (expresion -> DECIMAL .)
+    MENOS           reduce using rule 12 (expresion -> DECIMAL .)
+    MULTI           reduce using rule 12 (expresion -> DECIMAL .)
+    DIV             reduce using rule 12 (expresion -> DECIMAL .)
+
+
+state 14
+
+    (9) expresion -> PARA expresion . PARC
+    (5) expresion -> expresion . MAS expresion
+    (6) expresion -> expresion . MENOS expresion
+    (7) expresion -> expresion . MULTI expresion
+    (8) expresion -> expresion . DIV expresion
+
+    PARC            shift and go to state 21
+    MAS             shift and go to state 16
+    MENOS           shift and go to state 17
+    MULTI           shift and go to state 18
+    DIV             shift and go to state 19
+
+
+state 15
+
+    (4) instruccion -> EJECUTAR PARA expresion PARC .
+
+    PYC             reduce using rule 4 (instruccion -> EJECUTAR PARA expresion PARC .)
+
+
+state 16
+
+    (5) expresion -> expresion MAS . expresion
+    (5) expresion -> . expresion MAS expresion
+    (6) expresion -> . expresion MENOS expresion
+    (7) expresion -> . expresion MULTI expresion
+    (8) expresion -> . expresion DIV expresion
+    (9) expresion -> . PARA expresion PARC
+    (10) expresion -> . MENOS expresion
+    (11) expresion -> . ENTERO
+    (12) expresion -> . DECIMAL
+
+    PARA            shift and go to state 9
+    MENOS           shift and go to state 11
+    ENTERO          shift and go to state 12
+    DECIMAL         shift and go to state 13
+
+    expresion                      shift and go to state 22
+
+state 17
+
+    (6) expresion -> expresion MENOS . expresion
+    (5) expresion -> . expresion MAS expresion
+    (6) expresion -> . expresion MENOS expresion
+    (7) expresion -> . expresion MULTI expresion
+    (8) expresion -> . expresion DIV expresion
+    (9) expresion -> . PARA expresion PARC
+    (10) expresion -> . MENOS expresion
+    (11) expresion -> . ENTERO
+    (12) expresion -> . DECIMAL
+
+    PARA            shift and go to state 9
+    MENOS           shift and go to state 11
+    ENTERO          shift and go to state 12
+    DECIMAL         shift and go to state 13
+
+    expresion                      shift and go to state 23
+
+state 18
+
+    (7) expresion -> expresion MULTI . expresion
+    (5) expresion -> . expresion MAS expresion
+    (6) expresion -> . expresion MENOS expresion
+    (7) expresion -> . expresion MULTI expresion
+    (8) expresion -> . expresion DIV expresion
+    (9) expresion -> . PARA expresion PARC
+    (10) expresion -> . MENOS expresion
+    (11) expresion -> . ENTERO
+    (12) expresion -> . DECIMAL
+
+    PARA            shift and go to state 9
+    MENOS           shift and go to state 11
+    ENTERO          shift and go to state 12
+    DECIMAL         shift and go to state 13
+
+    expresion                      shift and go to state 24
+
+state 19
+
+    (8) expresion -> expresion DIV . expresion
+    (5) expresion -> . expresion MAS expresion
+    (6) expresion -> . expresion MENOS expresion
+    (7) expresion -> . expresion MULTI expresion
+    (8) expresion -> . expresion DIV expresion
+    (9) expresion -> . PARA expresion PARC
+    (10) expresion -> . MENOS expresion
+    (11) expresion -> . ENTERO
+    (12) expresion -> . DECIMAL
+
+    PARA            shift and go to state 9
+    MENOS           shift and go to state 11
+    ENTERO          shift and go to state 12
+    DECIMAL         shift and go to state 13
+
+    expresion                      shift and go to state 25
+
+state 20
+
+    (10) expresion -> MENOS expresion .
+    (5) expresion -> expresion . MAS expresion
+    (6) expresion -> expresion . MENOS expresion
+    (7) expresion -> expresion . MULTI expresion
+    (8) expresion -> expresion . DIV expresion
+
+    PARC            reduce using rule 10 (expresion -> MENOS expresion .)
+    MAS             reduce using rule 10 (expresion -> MENOS expresion .)
+    MENOS           reduce using rule 10 (expresion -> MENOS expresion .)
+    MULTI           reduce using rule 10 (expresion -> MENOS expresion .)
+    DIV             reduce using rule 10 (expresion -> MENOS expresion .)
+
+  ! MAS             [ shift and go to state 16 ]
+  ! MENOS           [ shift and go to state 17 ]
+  ! MULTI           [ shift and go to state 18 ]
+  ! DIV             [ shift and go to state 19 ]
+
+
+state 21
+
+    (9) expresion -> PARA expresion PARC .
+
+    PARC            reduce using rule 9 (expresion -> PARA expresion PARC .)
+    MAS             reduce using rule 9 (expresion -> PARA expresion PARC .)
+    MENOS           reduce using rule 9 (expresion -> PARA expresion PARC .)
+    MULTI           reduce using rule 9 (expresion -> PARA expresion PARC .)
+    DIV             reduce using rule 9 (expresion -> PARA expresion PARC .)
+
+
+state 22
+
+    (5) expresion -> expresion MAS expresion .
+    (5) expresion -> expresion . MAS expresion
+    (6) expresion -> expresion . MENOS expresion
+    (7) expresion -> expresion . MULTI expresion
+    (8) expresion -> expresion . DIV expresion
+
+    PARC            reduce using rule 5 (expresion -> expresion MAS expresion .)
+    MAS             reduce using rule 5 (expresion -> expresion MAS expresion .)
+    MENOS           reduce using rule 5 (expresion -> expresion MAS expresion .)
+    MULTI           shift and go to state 18
+    DIV             shift and go to state 19
+
+  ! MULTI           [ reduce using rule 5 (expresion -> expresion MAS expresion .) ]
+  ! DIV             [ reduce using rule 5 (expresion -> expresion MAS expresion .) ]
+  ! MAS             [ shift and go to state 16 ]
+  ! MENOS           [ shift and go to state 17 ]
+
+
+state 23
+
+    (6) expresion -> expresion MENOS expresion .
+    (5) expresion -> expresion . MAS expresion
+    (6) expresion -> expresion . MENOS expresion
+    (7) expresion -> expresion . MULTI expresion
+    (8) expresion -> expresion . DIV expresion
+
+    PARC            reduce using rule 6 (expresion -> expresion MENOS expresion .)
+    MAS             reduce using rule 6 (expresion -> expresion MENOS expresion .)
+    MENOS           reduce using rule 6 (expresion -> expresion MENOS expresion .)
+    MULTI           shift and go to state 18
+    DIV             shift and go to state 19
+
+  ! MULTI           [ reduce using rule 6 (expresion -> expresion MENOS expresion .) ]
+  ! DIV             [ reduce using rule 6 (expresion -> expresion MENOS expresion .) ]
+  ! MAS             [ shift and go to state 16 ]
+  ! MENOS           [ shift and go to state 17 ]
+
+
+state 24
+
+    (7) expresion -> expresion MULTI expresion .
+    (5) expresion -> expresion . MAS expresion
+    (6) expresion -> expresion . MENOS expresion
+    (7) expresion -> expresion . MULTI expresion
+    (8) expresion -> expresion . DIV expresion
+
+    PARC            reduce using rule 7 (expresion -> expresion MULTI expresion .)
+    MAS             reduce using rule 7 (expresion -> expresion MULTI expresion .)
+    MENOS           reduce using rule 7 (expresion -> expresion MULTI expresion .)
+    MULTI           reduce using rule 7 (expresion -> expresion MULTI expresion .)
+    DIV             reduce using rule 7 (expresion -> expresion MULTI expresion .)
+
+  ! MAS             [ shift and go to state 16 ]
+  ! MENOS           [ shift and go to state 17 ]
+  ! MULTI           [ shift and go to state 18 ]
+  ! DIV             [ shift and go to state 19 ]
+
+
+state 25
+
+    (8) expresion -> expresion DIV expresion .
+    (5) expresion -> expresion . MAS expresion
+    (6) expresion -> expresion . MENOS expresion
+    (7) expresion -> expresion . MULTI expresion
+    (8) expresion -> expresion . DIV expresion
+
+    PARC            reduce using rule 8 (expresion -> expresion DIV expresion .)
+    MAS             reduce using rule 8 (expresion -> expresion DIV expresion .)
+    MENOS           reduce using rule 8 (expresion -> expresion DIV expresion .)
+    MULTI           reduce using rule 8 (expresion -> expresion DIV expresion .)
+    DIV             reduce using rule 8 (expresion -> expresion DIV expresion .)
+
+  ! MAS             [ shift and go to state 16 ]
+  ! MENOS           [ shift and go to state 17 ]
+  ! MULTI           [ shift and go to state 18 ]
+  ! DIV             [ shift and go to state 19 ]
+
